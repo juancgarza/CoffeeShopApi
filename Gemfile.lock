@@ -47,6 +47,9 @@ GEM
     arel (6.0.3)
     awesome_print (1.7.0)
     builder (3.2.2)
+    bcrypt (3.1.11)
+    builder (3.2.2)
+    cancancan (1.15.0)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -58,6 +61,13 @@ GEM
     concurrent-ruby (1.0.2)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
+
+    devise (4.2.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     exception_notification (4.2.1)
@@ -92,6 +102,8 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+
+    orm_adapter (0.5.0)
     pg (0.18.4)
     pkg-config (1.1.7)
     pry (0.10.4)
@@ -137,6 +149,9 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (11.2.2)
     ref (2.0.0)
+
+    responders (2.2.0)
+      railties (>= 4.2.0, < 5.1)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -187,6 +202,9 @@ GEM
       activesupport (>= 3)
       railties (>= 3)
       yard (~> 0.7)
+
+    warden (1.2.6)
+      rack (>= 1.0)
     web-console (3.3.0)
       activemodel (>= 4.2)
       debug_inspector
@@ -201,6 +219,10 @@ DEPENDENCIES
   awesome_print
   coffee-rails (~> 4.1.0)
   database_cleaner
+  cancancan
+  coffee-rails (~> 4.1.0)
+  database_cleaner
+  devise
   exception_notification
   factory_girl_rails
   ffaker
@@ -222,4 +244,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.5
+   1.12.3
