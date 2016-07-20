@@ -1,10 +1,7 @@
 source "https://rubygems.org"
 
-ruby "2.0.0"
-
 gem "versionist"
 gem "active_model_serializers", github: "rails-api/active_model_serializers", branch: "0-8-stable"
-        
 
 gem "rails", "4.2"
 gem "jquery-rails"
