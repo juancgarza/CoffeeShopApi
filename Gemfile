@@ -11,6 +11,8 @@ gem "coffee-rails", "~> 4.1.0"
 gem "uglifier", ">= 1.3.0"
 gem "puma"
 gem "therubyracer"
+gem 'devise'
+gem 'cancancan'
 
 group :development do
   gem "spring"
