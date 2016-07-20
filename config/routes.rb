@@ -1,5 +1,35 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+  namespace :v1 do
+    get 'branches/index'
+    end
+  end
+
+  namespace :api do
+  namespace :v1 do
+    get 'branches/show'
+    end
+  end
+
+  namespace :api do
+  namespace :v1 do
+    get 'branches/create'
+    end
+  end
+
+  namespace :api do
+  namespace :v1 do
+    get 'branches/update'
+    end
+  end
+
+  namespace :api do
+  namespace :v1 do
+    get 'branches/destroy'
+    end
+  end
+
   # Change the line below to handle every request through a subdomain
   #namespace :api, constraints: { subdomain: 'api' }, path: '/' do
   namespace :api, path: '/api' do
