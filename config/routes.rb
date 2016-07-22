@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   # Change the line below to handle every request through a subdomain
   #namespace :api, constraints: { subdomain: 'api' }, path: '/' do
   namespace :api, path: '/api' do
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
                                              :value => "application/vnd.coffeeshopapi.com+json; version=1"},
                                              :defaults => {:format => :json}, :default => true) do
 
-      resources :coffeeshops, only: [:index, :show, :create, :update, :destroy]
+      resources :coffeeshops, only: [ :index , :show, :create, :update, :destroy]
     end
   end
 
