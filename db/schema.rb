@@ -11,20 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721004252) do
+ActiveRecord::Schema.define(version: 20160722014615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "coffee_shops", force: :cascade do |t|
     t.string   "name"
-    t.integer  "coffeeshop_id"
-    t.string   "schedule"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  create_table "schedules", force: :cascade do |t|
+    t.boolean  "monday",         default: false
+    t.boolean  "tuesday",        default: false
+    t.boolean  "wednesday",      default: false
+    t.boolean  "thursday",       default: false
+    t.boolean  "friday",         default: false
+    t.boolean  "saturday",       default: false
+    t.boolean  "sunday",         default: false
+    t.string   "from_hour",      default: "00:00"
+    t.string   "to_hour",        default: "23:59"
+    t.integer  "coffee_shop_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "schedules", ["coffee_shop_id"], name: "index_schedules_on_coffee_shop_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -39,9 +54,11 @@ ActiveRecord::Schema.define(version: 20160721004252) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "role",                   default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "schedules", "coffee_shops"
 end
