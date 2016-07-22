@@ -1,10 +1,10 @@
-class Api::V1::CoffeeshopsController < ApplicationController
+class Api::V1::CoffeeshopsController < Api::V1::BaseController
   def index
-    render json: Coffeeshop.all, status: 200
+    render json: CoffeeShop.all, status: 200
   end
 
   def show
-    coffeeshop = Coffeeshop.find(params[:id])
+    coffeeshop = CoffeeShop.find(params[:id])
     if coffeeshop 
       render json: coffeeshop, status: 200
     else
@@ -13,7 +13,7 @@ class Api::V1::CoffeeshopsController < ApplicationController
   end
 
   def create
-    coffee_shop = CoffeShop.new(coffee_shop_params)
+    coffee_shop = CoffeeShop.new(coffee_shop_params)
     if coffee_shop.save
       render json: coffee_shop, status: 201
     else
@@ -32,13 +32,14 @@ class Api::V1::CoffeeshopsController < ApplicationController
   end
 
   def destroy
-    coffee_shop = CoffeeShop.find(params[:id]).destroy
+    coffee_shop = CoffeeShop.find(params[:id])
+    coffee_shop.destroy
     head 204
   end
 
   private
   def coffee_shop_params
-    params.require(:coffeeshop)
+    params.require(:coffee_shop)
       .permit(
         :name, 
         :latitude, 
