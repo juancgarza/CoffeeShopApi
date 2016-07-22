@@ -1,5 +1,8 @@
 source "https://rubygems.org"
 
+ruby "2.3.0"
+
+
 gem "versionist"
 gem "active_model_serializers", github: "rails-api/active_model_serializers", branch: "0-8-stable"
 
@@ -11,8 +14,9 @@ gem "coffee-rails", "~> 4.1.0"
 gem "uglifier", ">= 1.3.0"
 gem "puma"
 gem "therubyracer"
-gem 'devise'
-gem 'cancancan'
+gem "devise"
+gem 'cancancan', '~> 1.10'
+
 
 group :development do
   gem "spring"

@@ -212,7 +212,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers!
   awesome_print
-  cancancan
+  cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
@@ -236,5 +236,8 @@ DEPENDENCIES
   versionist
   web-console
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.12.3
+   1.12.5
