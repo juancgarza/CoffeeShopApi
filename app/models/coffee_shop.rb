@@ -1,7 +1,8 @@
 class CoffeeShop < ActiveRecord::Base
-validates :name
-          , :coffeeshop_id
-          , :schedule
+
+  has_many :schedules
+
+  validates :name
           , :latitude
           , :longitude
           , presence: true

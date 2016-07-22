@@ -13,16 +13,45 @@ class Api::V1::CoffeeshopsController < ApplicationController
   end
 
   def create
+    coffee_shop = CoffeShop.new(coffee_shop_params)
+    if coffee_shop.save
+      render json: coffee_shop, status: 201
+    else
+      render json: { coffeeshop: { errors: coffee_shop.errors } }, status: 422
+    end
   end
 
   def update
+    coffee_shop = CoffeeShop.find(params[:id])
+    render json: { coffeeshop_id: params[:id], message: "Not found" }, status: 404 unless coffee_shop
+    if coffee_shop.update(coffee_shop_params)
+      render json: coffee_shop, status: 201
+    else
+      render json: { coffeeshop: { errors: coffee_shop.errors } }, status: 422
+    end
   end
 
   def destroy
+    coffee_shop = CoffeeShop.find(params[:id]).destroy
+    head 204
   end
 
   private
-  def coffeeshop_params
-    params.require(:coffeeshop).permit(:name)
+  def coffee_shop_params
+    params.require(:coffeeshop)
+      .permit(
+        :name, 
+        :latitude, 
+        :longitude, 
+        schedule_params: [
+          :monday, 
+          :tuesday, 
+          :wednesday, 
+          :thursday, 
+          :friday, 
+          :saturday, 
+          :sunday
+        ]
+      )
   end
 end
