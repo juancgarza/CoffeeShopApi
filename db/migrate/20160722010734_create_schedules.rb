@@ -10,10 +10,10 @@ class CreateSchedules < ActiveRecord::Migration
       t.boolean :sunday, default: false
       t.string :from_hour, default: '00:00'
       t.string :to_hour, default: '23:59'
-      t.references :coffeeshop, index: true
+      t.references :coffee_shop, index: true
 
       t.timestamps null: false
     end
-    add_foreign_key :schedules, :coffeeshops
+    add_foreign_key :schedules, :coffee_shops
   end
 end
