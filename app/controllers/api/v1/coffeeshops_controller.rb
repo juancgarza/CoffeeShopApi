@@ -1,7 +1,12 @@
 class Api::V1::CoffeeshopsController < Api::V1::BaseController
   def index
-    if params[:q]
-
+    if search_params_present?
+      coffee_shops = CoffeeShop.fuzzy_search(search_params)
+      if coffee_shops
+        render json: coffee_shops, status: 200
+      else
+        render json: { message: "No coffeeshops were found with given parameters" }, status: 404
+      end
     else
       render json: CoffeeShop.all, status: 200
     end
@@ -62,5 +67,9 @@ class Api::V1::CoffeeshopsController < Api::V1::BaseController
 
   def search_params
     params.permit(:name, :city, :cp)
+  end
+
+  def search_params_present?
+    params.has_key?(:name) || params.has_key?(:city) || params.has_key?(:cp)
   end
 end
