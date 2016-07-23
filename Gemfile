@@ -13,6 +13,7 @@ gem "puma"
 gem "therubyracer"
 gem "devise"
 gem 'cancancan', '~> 1.10'
+gem 'textacular', '~> 3.0'
 
 
 group :development do

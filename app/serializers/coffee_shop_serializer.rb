@@ -4,11 +4,18 @@ class CoffeeShopSerializer < ActiveModel::Serializer
 include ActiveRecord::Calculations
 
   def location
-    { latitude: object.latitude, longitude: object.longitude }
+    { 
+      address: object.address,
+      city: object.city,
+      state: object.state,
+      cp: object.cp,
+      latitude: object.latitude, 
+      longitude: object.longitude,
+    }
   end
 
   def avg_rating
-    self.rating_value.average
+    "#{object.rating_value}/5"
   end
 
 end
