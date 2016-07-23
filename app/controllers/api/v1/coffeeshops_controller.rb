@@ -1,6 +1,10 @@
 class Api::V1::CoffeeshopsController < Api::V1::BaseController
   def index
-    render json: CoffeeShop.all, status: 200
+    if params[:q]
+
+    else
+      render json: CoffeeShop.all, status: 200
+    end
   end
 
   def show
@@ -54,5 +58,9 @@ class Api::V1::CoffeeshopsController < Api::V1::BaseController
           :sunday
         ]
       )
+  end
+
+  def search_params
+    params.permit(:name, :city, :cp)
   end
 end
